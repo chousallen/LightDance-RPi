@@ -302,6 +302,7 @@ void LEDPlayer::loop(StateMachine *fsm) {
 	        //cerr<<"[LED Loop]Now Playing\n";	
             const long elapsedTime =
                 getElapsedTime(fsm->data.baseTime, currentTime);  // us
+            fprintf(stderr, "[LED Loop] ElapsedTime [%d]\n", elapsedTime);
             // const int currentTimeId = getTimeId(elapsedTime);
 	        //  fprintf(stderr,"[LED Loop] ElapsedTime [%d]\n",elapsedTime);
 	        calculateFrameIds(elapsedTime / 1000l);
