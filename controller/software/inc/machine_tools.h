@@ -1,5 +1,5 @@
-#ifndef _MACINE_TOOLS_H_
-#define _MACINE_TOOLS_H_
+#ifndef _MACHINE_TOOLS_H_
+#define _MACHINE_TOOLS_H_
 
 #include <thread>
 

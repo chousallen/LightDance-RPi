@@ -76,8 +76,8 @@ void StateMachine::enterState(STATE state)
 
 void StateMachine::exitSTOP() 
 {
+    gettimeofday(&data.enter_delay_time, NULL);
     fprintf(stderr, "%sexitSTOP\n", TAG);
-    restart();
 }
 
 void StateMachine::exitPLAY() 
@@ -175,9 +175,10 @@ void StateMachine::enterDELAY()
     fprintf(stderr, "%sDelay time: ", TAG);
     fprint_timeval(stderr, data.delay_duration);
     fprintf(stderr, "\n");
+    gettimeofday(&data.enter_delay_time, NULL); 
+    restart();
     if(data.delay_duration * data.delay_display_ratio != TIME_ZERO)
-        delayDisplay(true);
-    gettimeofday(&data.enter_delay_time, NULL);
+         delayDisplay(true);
     //resume(this);
 }
 
@@ -185,6 +186,9 @@ StateMachine::StateMachine(): m_state(STATE_STOP)
 {
     fprintf(stderr, "%sConstructor\n", TAG);
     data = DATA_RESET;
+    this->LEDReady = false;
+    this->OFReady = false;
+    //restart();
 }
 
 StateMachine::~StateMachine()
